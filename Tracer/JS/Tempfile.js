@@ -13,8 +13,8 @@ const {
 // }
 
 // define tracer variables {
-const chart = new ChartTracer();
-const tracer = new Array1DTracer();
+const chart = new ChartTracer("Bubble Sort - Graph ");
+const tracer = new Array1DTracer("Bubble Sort - Array ");
 const logger = new LogTracer();
 Layout.setRoot(new VerticalLayout([chart, tracer, logger]));
 const D = Randomize.Array1D({ N: 15 });
@@ -26,30 +26,44 @@ Tracer.delay(20);
 // logger {
 logger.println(`original array = [${D.join(", ")}]`);
 // }
-for (let i = 1; i < D.length; i++) {
-  const key = D[i];
+let N = D.length;
+let swapped;
+do {
+  swapped = false;
   // visualize {
-  logger.println(`insert ${key}`);
-  tracer.select(i);
-  Tracer.delay(31);
+  tracer.select(N - 1);
+  Tracer.delay(32);
   // }
-  let j;
-  for (j = i - 1; j >= 0 && D[j] > key; j--) {
-    D[j + 1] = D[j];
+  for (let i = 1; i < N; i++) {
     // visualize {
-    tracer.patch(j + 1, D[j + 1]);
-    Tracer.delay(38);
-    tracer.depatch(j + 1);
+    tracer.select(i);
+    Tracer.delay(37);
+    // }
+    if (D[i - 1] > D[i]) {
+      // logger {
+      logger.println(`swap ${D[i - 1]} and ${D[i]}`);
+      // }
+      const temp = D[i - 1];
+      D[i - 1] = D[i];
+      D[i] = temp;
+      swapped = true;
+      // visualize {
+      tracer.patch(i - 1, D[i - 1]);
+      tracer.patch(i, D[i]);
+      Tracer.delay(50);
+      tracer.depatch(i - 1);
+      tracer.depatch(i);
+      // }
+    }
+    // visualize {
+    tracer.deselect(i);
     // }
   }
-  D[j + 1] = key;
   // visualize {
-  tracer.patch(j + 1, D[j + 1]);
-  Tracer.delay(45);
-  tracer.depatch(j + 1);
-  tracer.deselect(i);
+  tracer.deselect(N - 1);
   // }
-}
+  N--;
+} while (swapped);
 // logger {
 logger.println(`sorted array = [${D.join(", ")}]`);
 // }
