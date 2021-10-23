@@ -15,7 +15,7 @@ for (let i = 1; i <= N; i++) {
 }
 
 // define tracer variables {
-const tracer = new Array1DTracer("Sieve");
+const tracer = new Array1DTracer("Prime Number");
 tracer.set(a);
 const logger = new LogTracer();
 Layout.setRoot(new VerticalLayout([tracer, logger]));

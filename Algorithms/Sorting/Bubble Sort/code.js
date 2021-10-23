@@ -11,8 +11,8 @@ const {
 // }
 
 // define tracer variables {
-const chart = new ChartTracer();
-const tracer = new Array1DTracer();
+const chart = new ChartTracer("Bubble Sort - Graph ");
+const tracer = new Array1DTracer("Bubble Sort - Array ");
 const logger = new LogTracer();
 Layout.setRoot(new VerticalLayout([chart, tracer, logger]));
 const D = Randomize.Array1D({ N: 15 });
