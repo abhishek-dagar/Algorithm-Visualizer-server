@@ -1,5 +1,5 @@
 const process = { env: { ALGORITHM_VISUALIZER: '1' } };
-importScripts('http://localhost:8080/api/tracers/js/worker');
+importScripts('/api/tracers/js/worker');
 
 const sandbox = code => {
   const require = name => ({ 'algorithm-visualizer': AlgorithmVisualizer }[name]); // fake require
