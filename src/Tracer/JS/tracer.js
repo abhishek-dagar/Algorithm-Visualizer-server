@@ -391,6 +391,68 @@
       Array2DTracer.prototype.deselectCol = function (y, sx, ex) {
           this.command('deselectCol', arguments);
       };
+      /**
+       * SelectTrue indices of the array.
+       *
+       * @param sx The row index to select inclusively from.
+       * @param sy The column index to select inclusively from.
+       * @param ex The row index to select inclusively to. If omitted, it will only select index `sx`.
+       * @param ey The column index to select inclusively to. If omitted, it will only select index `sy`.
+       */
+       Array2DTracer.prototype.selectTrue = function (sx, sy, ex, ey) {
+        this.command('selectTrue', arguments);
+    };
+    /**
+     * SelectTrue indices of a row of the array.
+     *
+     * @param x The row index to select.
+     * @param sy The column index to select inclusively from.
+     * @param ey The column index to select inclusively to.
+     */
+    Array2DTracer.prototype.selectRowTrue = function (x, sy, ey) {
+        this.command('selectRowTrue', arguments);
+    };
+    /**
+     * SelectTrue indices of a column of the array.
+     *
+     * @param y The column index to select.
+     * @param sx The row index to select inclusively from.
+     * @param ex The row index to select inclusively to.
+     */
+    Array2DTracer.prototype.selectColTrue = function (y, sx, ex) {
+        this.command('selectColTrue', arguments);
+    };
+    /**
+     * Stop selecting True indices of the array.
+     *
+     * @param sx The row index to stop selecting inclusively from.
+     * @param sy The column index to stop selecting inclusively from.
+     * @param ex The row index to stop selecting inclusively to. If omitted, it will only stop selecting index `sx`.
+     * @param ey The column index to stop selecting inclusively to. If omitted, it will only stop selecting index `sy`.
+     */
+    Array2DTracer.prototype.deselectTrue = function (sx, sy, ex, ey) {
+        this.command('deselectTrue', arguments);
+    };
+    /**
+     * Stop selecting indices of a row of the array.
+     *
+     * @param x The row index to stop selecting.
+     * @param sy The column index to stop selecting inclusively from.
+     * @param ey The column index to stop selecting inclusively to.
+     */
+    Array2DTracer.prototype.deselectRowTrue = function (x, sy, ey) {
+        this.command('deselectRowTrue', arguments);
+    };
+    /**
+     * Stop selecting indices of a column of the array.
+     *
+     * @param y The column index to stop selecting.
+     * @param sx The row index to stop selecting inclusively from.
+     * @param ex The row index to stop selecting inclusively to.
+     */
+    Array2DTracer.prototype.deselectColTrue = function (y, sx, ex) {
+        this.command('deselectColTrue', arguments);
+    };
       return Array2DTracer;
   }(Tracer));
 
@@ -424,6 +486,24 @@
       Array1DTracer.prototype.depatch = function (x) {
           this.command('depatch', arguments);
       };
+      /**
+       * SelectTrue indices of the array.
+       *
+       * @param sx The index to select inclusively from.
+       * @param ex The index to select inclusively to. If omitted, it will only select index `sx`.
+       */
+      Array1DTracer.prototype.selectTrue = function (sx, ex) {
+          this.command('selectTrue', arguments);
+      };
+      /**
+       * Stop selecting indices of the array.
+       *
+       * @param sx The index to stop selecting inclusively from.
+       * @param ex The index to stop selecting inclusively to. If omitted, it will only stop selecting index `sx`.
+       */
+       Array1DTracer.prototype.deselectTrue = function (sx, ex) {
+        this.command('deselectTrue', arguments);
+    };
       /**
        * Select indices of the array.
        *

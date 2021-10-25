@@ -61,11 +61,13 @@ for (let i = 0; i < D.length - 1; i++) {
     tracer.depatch(i);
     // }
   }
-  tracer.depatch(minJ);
   // visualize {
+  tracer.depatch(minJ);
   tracer.deselect(i);
+  tracer.selectTrue(i);
   // }
 }
 // logger {
-logger.println(`sorted array = [${D.join(", ")}]`);
+tracer.selectTrue(D.length - 1);
 // }
+logger.println(`sorted array = [${D.join(", ")}]`);

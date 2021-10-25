@@ -22,31 +22,38 @@ Layout.setRoot(new VerticalLayout([tracer, logger]));
 Tracer.delay();
 // }
 
+logger.println("1 is not prime So it marked red");
 // visualize {
-logger.println("1 is not prime");
-tracer.select(0);
+tracer.patch(0);
 Tracer.delay();
 // }
 for (let i = 2; i <= N; i++) {
   logger.println(`Checking ${i}`);
+  // visualize {
   tracer.select(i - 1);
   Tracer.delay();
+  // }
   let flag = true;
-  for (let j = 2; j * j < i; j++) {
+  for (let j = 2; j * j <= i; j++) {
     if (i % j === 0) {
       flag = false;
     }
   }
+  // visualize {
+  tracer.deselect(i - 1);
+  // }
   if (flag) {
-    logger.println(`Marked Blue, So ${i} is a prime Number`);
-    tracer.select(i - 1);
+    logger.println(`Marked Green, So ${i} is a prime Number`);
+    // visualize {
+    tracer.selectTrue(i - 1);
     Tracer.delay();
+    // }
   } else {
     logger.println(`Marked red, So ${i} is not a prime Number`);
+    // visualize {
     tracer.patch(i - 1);
     Tracer.delay();
+    // }
   }
 }
-// logger {
-logger.println(`The Blue marked numbers are the prime numbers from 1 to ${N}`);
-// }
+logger.println(`The Green marked numbers are the prime numbers from 1 to ${N}`);

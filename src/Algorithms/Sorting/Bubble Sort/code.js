@@ -59,6 +59,10 @@ do {
   }
   // visualize {
   tracer.deselect(N - 1);
+  tracer.selectTrue(N - 1);
+  if(!swapped){
+    tracer.selectTrue(0,N - 1);
+  }
   // }
   N--;
 } while (swapped);

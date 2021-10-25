@@ -48,6 +48,10 @@ for (let i = 1; i < D.length; i++) {
   tracer.deselect(i);
   // }
 }
-// logger {
-logger.println(`sorted array = [${D.join(", ")}]`);
+// visualize {
+for (let i = 0; i < D.length; i++){
+  tracer.selectTrue(i)
+  Tracer.delay();
+}
 // }
+logger.println(`sorted array = [${D.join(", ")}]`);

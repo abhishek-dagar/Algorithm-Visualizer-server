@@ -1,3 +1,4 @@
+// import visualization libraries {
 const {
   Tracer,
   Array1DTracer,
@@ -25,30 +26,26 @@ Tracer.delay();
 
 // visualize {
 logger.println("1 is not prime");
-tracer.select(0);
+tracer.patch(0);
 Tracer.delay();
 // }
 for (let i = 2; i <= N; i++) {
   if (b[i] === 0) {
     // visualize {
-    // a[i-1] is prime mark by red indicators
     tracer.select(i - 1);
     Tracer.delay();
-    logger.println(`${i} is not marked, so it is prime`);
+    tracer.selectTrue(i - 1);
     // }
+    logger.println(`${i} is not marked, so it is prime`);
     for (let j = i + i; j <= N; j += i) {
-      b[j] = 1; // a[j-1] is not prime, mark by blue indicators
+      b[j] = 1;
       // visualize {
       tracer.patch(j - 1);
       Tracer.delay();
-      logger.println(`${j} is a multiple of ${i} so it is marked as red`);
       // }
+      logger.println(`${j} is a multiple of ${i} so it is marked as red`);
     }
-    // visualize {
-    // tracer.depatch(i - 1);
-    // }
   }
 }
-// logger {
-logger.println(`The Blue marked numbers are the prime numbers from 1 to ${N}`);
-// }
+
+logger.println(`The Green marked numbers are the prime numbers from 1 to ${N}`);
