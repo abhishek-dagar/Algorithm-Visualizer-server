@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require("http");
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -18,6 +19,10 @@ app.use((req, res, next) => {
 const apiroute = require('./Routes/APIrouter.router')
 app.use('/api',apiroute);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });
+const httpServer = http.createServer(app);
+httpServer.listen(port);
+console.info(`http: listening on port http://localhost:${port}`);

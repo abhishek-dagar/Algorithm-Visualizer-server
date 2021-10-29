@@ -1,25 +1,55 @@
-# Python program for implementation of Bubble Sort
-import random
-def bubbleSort(arr):
-	n = len(arr)
+from AlgorithmVisualizer import Tracer, Array1DTracer, LogTracer, Layout, VerticalLayout, ChartTracer, randomize
 
-	# Traverse through all array elements
-	for i in range(n):
+# define tracer variables {
+chart = ChartTracer("Bubble Sort - Graph")
+tracer = Array1DTracer("Bubble Sort - Array")
+logger = LogTracer()
+Layout.setRoot(VerticalLayout([chart, tracer, logger]))
+array = randomize.Array1D(15).array
+tracer.set(array)
+tracer.chart(chart)
+Tracer.delay()
+# }
 
-		# Last i elements are already in place
-		for j in range(0, n-i-1):
+string_array = [str(int) for int in array]
+logger.println('original array = ['+','.join(string_array)+']')
 
-			# traverse the array from 0 to n-i-1
-			# Swap if the element found is greater
-			# than the next element
-			if arr[j] > arr[j+1] :
-				arr[j], arr[j+1] = arr[j+1], arr[j]
+swapped=True
+n=len(array)
+while(swapped):
+	swapped=False
+	# visualize {
+	tracer.select(n-1)
+	Tracer.delay()
+	# }
+	for i in range(1,n):
+		# visualize {
+		tracer.select(i-1,i)
+		Tracer.delay()
+		# }
+		if(array[i-1]>array[i]):
+			logger.println('swap '+str(array[i - 1])+ ' and '+ str(array[i]))
+			array[i - 1], array[i] = array[i], array[i - 1]
+			swapped=True
+			# visualize {
+			tracer.patch(i - 1, array[i - 1])
+			tracer.patch(i, array[i])
+			Tracer.delay()
+			tracer.depatch(i - 1)
+			tracer.depatch(i)
+			# }
+		# visualize {
+		tracer.deselect(i-1,i)
+		# }
+	# visualize {
+	tracer.deselect(n-1)
+	tracer.selectTrue(n-1)
+	# }
+	if not swapped:
+		# visualize {
+		tracer.selectTrue(0,n - 1)
+		# }
+	n-=1
 
-# Driver code to test above
-arr = [random.randint(1, 50) for _ in range(20)]
-
-bubbleSort(arr)
-
-print ("Sorted array is:",end=" ")
-for i in range(len(arr)):
-	print (arr[i],end=" "),
+string_array = [str(int) for int in array]
+logger.println('sorted array = ['+','.join(string_array)+']')

@@ -34,7 +34,7 @@ do {
   // }
   for (let i = 1; i < N; i++) {
     // visualize {
-    tracer.select(i);
+    tracer.select(i-1,i);
     Tracer.delay();
     // }
     if (D[i - 1] > D[i]) {
@@ -54,7 +54,7 @@ do {
       // }
     }
     // visualize {
-    tracer.deselect(i);
+    tracer.deselect(i-1,i);
     // }
   }
   // visualize {
