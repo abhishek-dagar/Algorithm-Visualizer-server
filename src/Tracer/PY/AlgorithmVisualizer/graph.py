@@ -1,9 +1,9 @@
 from .log import LogTracer, Tracer
-from .types import Number, Serializable, SerializableSequence, UNDEFINED
+from .types import Number, Serializable, UNDEFINED
 
 
 class GraphTracer(Tracer):
-    def set(self, array2d: SerializableSequence[SerializableSequence[Serializable]] = UNDEFINED):
+    def set(self, array2d):
         self.command("set", array2d)
 
     def directed(self, isDirected: bool = UNDEFINED):

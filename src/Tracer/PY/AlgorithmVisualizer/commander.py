@@ -12,7 +12,7 @@ _MAX_OBJECTS = 100
 class Commander:
     _keyRandomizer = String(8, string.ascii_lowercase + string.digits)
     _objectCount = 0
-    commands: List[Dict[str, Serializable]] = []
+    commands = []
 
     def __init__(self, *args: Serializable):
         self._objectCount += 1

@@ -1,11 +1,9 @@
-from typing import Iterable
-
 from .commander import Commander
 from .types import UNDEFINED
 
 
 class Layout(Commander):
-    def __init__(self, children: Iterable[Commander]):
+    def __init__(self, children):
         super().__init__(tuple(c.key for c in children))
 
     @classmethod

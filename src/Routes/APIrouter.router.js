@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { Hierarchy } = require("../models/Hierarchy");
-const { PythonShell } = require("python-shell");
 const cate = new Hierarchy();
 const path = require("path");
 
@@ -32,22 +31,11 @@ router.get("/tracers/js/worker", (req, res) => {
 });
 
 // For getting the Python AnimatedArray
-router.post("/tracers/py", (req, res) => {
-  const filepath = path.join(__dirname,"../Tracer/PY");
+router.post("/tracers/py", async (req, res) => {
+  const {runpy} = require("../Tracer/executepy");
   const {code} = req.body;
-  let options = {
-    mode: "text",
-    pythonOptions: ["-u"],
-    scriptPath: filepath,
-    args: [code],
-  };
-  PythonShell.run("pyRunner.py", options, function (err, result) {
-    if (err) console.log(err.message);
-    if (result){
-      const commands = JSON.parse(result[result.length-1]);
-      res.send(commands.commands)
-    }
-  });
+  const commands = await runpy(code);
+  res.send(commands)
 });
 
 module.exports = router;

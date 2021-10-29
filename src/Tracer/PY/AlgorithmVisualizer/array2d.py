@@ -1,9 +1,9 @@
 from .tracer import Tracer
-from .types import Serializable, SerializableSequence, UNDEFINED
+from .types import Serializable, UNDEFINED
 
 
 class Array2DTracer(Tracer):
-    def set(self, array2d: SerializableSequence[SerializableSequence[Serializable]] = UNDEFINED):
+    def set(self, array2d):
         self.command("set", array2d)
 
     def patch(self, x: int, y: int, v: Serializable = UNDEFINED):

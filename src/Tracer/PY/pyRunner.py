@@ -1,8 +1,9 @@
 import sys
 import json
+from AlgorithmVisualizer import Tracer
 code = sys.argv[1]
 exec(code)
 res = {
-    'commands':tracer.commands,
+    'commands':Tracer.commands,
 }
 print(json.dumps(res))

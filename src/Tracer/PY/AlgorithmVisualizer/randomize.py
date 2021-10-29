@@ -1,7 +1,7 @@
 import abc
 import random
 import string
-from typing import List, NoReturn, Sequence
+from typing import NoReturn, Sequence
 
 
 class _Randomizer(metaclass=abc.ABCMeta):
@@ -49,7 +49,7 @@ class Array1D(_Randomizer):
         self._sorted = sorted
         return self
 
-    def create(self) -> List:
+    def create(self):
         array = [self._randomizer.create() for _ in range(self._N)]
         if self._sorted:
             array.sort()
@@ -66,7 +66,7 @@ class Array2D(Array1D):
         self._sorted = sorted
         return self
 
-    def create(self) -> List[List]:
+    def create(self):
         return [super().create() for _ in range(self._N)]
 
 
@@ -86,7 +86,7 @@ class Graph(_Randomizer):
         self._weighted = weighted
         return self
 
-    def create(self) -> List[List]:
+    def create(self):
         graph = [[None] * self._N for _ in range(self._N)]
         for i in range(self._N):
             for j in range(self._N):

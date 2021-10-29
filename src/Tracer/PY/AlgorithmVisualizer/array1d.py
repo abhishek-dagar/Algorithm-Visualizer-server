@@ -1,6 +1,6 @@
 # from . import chart
 from .array2d import Array2DTracer
-from .types import Serializable, SerializableSequence, UNDEFINED
+from .types import Serializable, UNDEFINED
 
 
 class Array1DTracer(Array2DTracer):
