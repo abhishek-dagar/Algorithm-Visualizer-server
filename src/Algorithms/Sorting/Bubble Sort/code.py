@@ -12,7 +12,7 @@ Tracer.delay()
 # }
 
 string_array = [str(int) for int in array]
-logger.println('original array = ['+','.join(string_array)+']')
+println('original array = ['+','.join(string_array)+']')
 
 swapped=True
 n=len(array)
@@ -28,7 +28,7 @@ while(swapped):
 		Tracer.delay()
 		# }
 		if(array[i-1]>array[i]):
-			logger.println('swap '+str(array[i - 1])+ ' and '+ str(array[i]))
+			println('swap '+str(array[i - 1])+ ' and '+ str(array[i]))
 			array[i - 1], array[i] = array[i], array[i - 1]
 			swapped=True
 			# visualize {
@@ -52,4 +52,4 @@ while(swapped):
 	n-=1
 
 string_array = [str(int) for int in array]
-logger.println('sorted array = ['+','.join(string_array)+']')
+println('sorted array = ['+','.join(string_array)+']')
